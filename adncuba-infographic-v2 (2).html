@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=1600">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Cinco datos — ADN Cuba</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,22 +11,23 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-  width: 1600px;
-  height: 1600px;
+  width: 100%;
+  min-width: 600px;
   background: #F8F6F2;
   font-family: 'Inter', sans-serif;
   color: #1A1A1A;
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: auto;
   position: relative;
 }
 
 /* ── LAYOUT SHELL ── */
 .canvas {
-  width: 1600px;
-  height: 1600px;
+  width: 600px;
+  height: 600px;
   display: flex;
   flex-direction: column;
-  padding: 80px 110px 0 110px;
+  padding: 30px 40px 40px 40px;
 }
 
 /* ── HEADER ── */
@@ -34,16 +35,16 @@ body {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  margin-bottom: 28px;
+  margin-bottom: 14px;
 }
 
 .header-left { flex: 1; }
 
 .eyebrow {
   font-family: 'Inter', sans-serif;
-  font-size: 13px;
+  font-size: 10px;
   font-weight: 600;
-  letter-spacing: 3px;
+  letter-spacing: 2px;
   text-transform: uppercase;
   color: #C41200;
   margin-bottom: 14px;
@@ -51,7 +52,7 @@ body {
 
 .title {
   font-family: 'Oswald', sans-serif;
-  font-size: 58px;
+  font-size: 22px;
   font-weight: 700;
   line-height: 1.05;
   letter-spacing: -0.5px;
@@ -63,7 +64,7 @@ body {
 .subtitle {
   margin-top: 16px;
   font-family: 'Inter', sans-serif;
-  font-size: 20px;
+  font-size: 13px;
   font-weight: 400;
   color: #555;
   letter-spacing: 0.1px;
@@ -90,14 +91,14 @@ body {
   flex: 1;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: auto auto;
   gap: 0;
   margin-top: 0;
 }
 
 /* ── MODULE ── */
 .module {
-  padding: 52px 52px 44px 52px;
+  padding: 20px 20px 18px 20px;
   border-right: 1px solid #D8D4CC;
   border-bottom: 1px solid #D8D4CC;
   display: flex;
@@ -128,50 +129,50 @@ body {
 /* ── MODULE ELEMENTS ── */
 .m-num {
   font-family: 'Inter', sans-serif;
-  font-size: 12px;
+  font-size: 9px;
   font-weight: 600;
-  letter-spacing: 2.5px;
+  letter-spacing: 2px;
   color: #AAA49A;
   text-transform: uppercase;
-  margin-bottom: 10px;
+  margin-bottom: 6px;
 }
 
 .m-category {
   font-family: 'Inter', sans-serif;
-  font-size: 13px;
+  font-size: 9px;
   font-weight: 600;
-  letter-spacing: 2px;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
   color: #888;
-  margin-bottom: 28px;
+  margin-bottom: 12px;
 }
 
 .rule-inline {
-  width: 32px;
+  width: 20px;
   height: 2px;
   background: #C41200;
-  margin-bottom: 24px;
+  margin-bottom: 10px;
 }
 
 .m-stat {
   font-family: 'Oswald', sans-serif;
-  font-size: 88px;
+  font-size: 36px;
   font-weight: 700;
   color: #C41200;
   line-height: 0.9;
-  letter-spacing: -2px;
-  margin-bottom: 24px;
+  letter-spacing: -1px;
+  margin-bottom: 10px;
 }
 
 .m-stat--lg {
-  font-size: 72px;
-  letter-spacing: -2px;
+  font-size: 28px;
+  letter-spacing: -1px;
   line-height: 0.92;
 }
 
 .m-stat--xl {
-  font-size: 60px;
-  letter-spacing: -1px;
+  font-size: 24px;
+  letter-spacing: -0.5px;
   line-height: 1;
 }
 
@@ -195,7 +196,7 @@ body {
   border-radius: 2px 2px 0 0;
 }
 
-.bar-1989 { height: 80px; background: rgba(232, 50, 42, 0.22); }
+.bar-1989 { height: 40px; background: rgba(232, 50, 42, 0.22); }
 .bar-2025 { height: 5px; background: #E8322A; }
 
 .bar-year {
@@ -216,25 +217,25 @@ body {
   color: #E8322A;
   font-size: 22px;
   font-weight: 700;
-  padding-bottom: 28px;
+  padding-bottom: 14px;
   font-family: 'Inter', sans-serif;
 }
 
 .m-body {
   font-family: 'Inter', sans-serif;
-  font-size: 17px;
+  font-size: 11px;
   font-weight: 400;
   color: #333;
-  line-height: 1.6;
+  line-height: 1.5;
   flex: 1;
 }
 
 .m-source {
   font-family: 'Inter', sans-serif;
-  font-size: 12px;
+  font-size: 10px;
   color: #AAA49A;
-  margin-top: 18px;
-  padding-top: 14px;
+  margin-top: 10px;
+  padding-top: 8px;
   border-top: 1px solid #D8D4CC;
   font-style: italic;
   line-height: 1.5;
@@ -247,63 +248,36 @@ body {
   align-items: center;
   justify-content: space-between;
   border-top: 1px solid #D8D4CC;
-  padding: 0 110px;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  padding: 0 40px;
   background: #F8F6F2;
+  margin-top: auto;
+  width: 600px;
 }
 
 .footer-text {
   font-family: 'Inter', sans-serif;
-  font-size: 13px;
+  font-size: 10px;
   color: #888;
-  max-width: 1200px;
+  max-width: 460px;
   line-height: 1.4;
 }
 
-.footer-logo {
-  display: inline-flex;
-  align-items: center;
-  gap: 0;
-  background: #C41200;
-  padding: 5px 10px 5px 8px;
-  flex-shrink: 0;
-}
 
-.fl-adn {
-  font-family: 'Oswald', sans-serif;
-  font-size: 16px;
-  font-weight: 700;
-  color: #fff;
-  letter-spacing: -0.5px;
-  line-height: 1;
-}
 
-.fl-cuba {
-  font-family: 'Inter', sans-serif;
-  font-size: 14px;
-  font-weight: 600;
-  color: #fff;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  margin-left: 3px;
-  line-height: 1;
-  align-self: flex-end;
-  padding-bottom: 1px;
-}
+
+
+
 
 /* Icon strip above stat */
 .m-icon {
-  width: 26px;
-  height: 26px;
+  width: 16px;
+  height: 16px;
   stroke: #C41200;
   fill: none;
   stroke-width: 1.8;
   stroke-linecap: round;
   stroke-linejoin: round;
-  margin-bottom: 18px;
+  margin-bottom: 8px;
 }
 
 .module--featured .m-icon { stroke: rgba(232, 50, 42, 0.7); }
@@ -357,7 +331,7 @@ body {
       <div class="m-category">Moneda</div>
       <svg class="m-icon" viewBox="0 0 26 26"><circle cx="11" cy="13" r="6"/><line x1="11" y1="7" x2="11" y2="19"/><line x1="18" y1="10" x2="26" y2="10"/><line x1="17" y1="13" x2="22" y2="13" stroke-dasharray="0"/><path d="M17 16 L26 16"/><path d="M22 8 L26 10 L22 12"/></svg>
       <div class="rule-inline"></div>
-      <div class="m-stat m-stat--lg">+600<br><span style="font-size:44px;letter-spacing:-1px;">CUP/USD</span></div>
+      <div class="m-stat m-stat--lg">+600<br><span style="font-size:18px;letter-spacing:-0.5px;">CUP/USD</span></div>
       <div class="m-body">El peso superó los 600 por dólar en el mercado informal en junio de 2026.</div>
       <div class="m-source">Carlos Martínez (Archbridge Institute / Universidad George Mason), Cubanomics.</div>
     </div>
@@ -384,7 +358,7 @@ body {
         </div>
       </div>
 
-      <div class="m-stat" style="font-size:74px;">−97,5%</div>
+      <div class="m-stat" style="font-size:30px;">−97,5%</div>
       <div class="m-body">La producción azucarera caerá en 2025 a su nivel más bajo desde el siglo XIX.</div>
       <div class="m-source">Reuters, informes oficiales y fuentes de la industria.</div>
     </div>
@@ -395,7 +369,7 @@ body {
       <div class="m-category">Migración</div>
       <svg class="m-icon" viewBox="0 0 26 26"><path d="M4 16 Q7 11 13 12 Q19 11 22 16 Q19 19 13 19 Q7 21 4 16Z"/><path d="M13 8 L13 4 M13 4 L11 6 M13 4 L15 6"/><path d="M20 10 L24 8 M24 8 L24 10 M24 8 L22 8"/><path d="M6 10 L2 8 M2 8 L2 10 M2 8 L4 8"/></svg>
       <div class="rule-inline"></div>
-      <div style="display:flex; align-items:flex-start; gap:60px; flex:1;">
+      <div style="display:flex; align-items:flex-start; gap:20px; flex:1;">
         <div style="flex:0 0 auto;">
           <div class="m-stat m-stat--xl">1 de<br>cada 5</div>
         </div>
@@ -403,27 +377,27 @@ body {
           <div style="margin-bottom:24px;">
             <!-- Visual: 5 person icons, 1 highlighted -->
             <div style="display:flex; gap:14px; margin-bottom:18px; align-items:center;">
-              <svg width="32" height="36" viewBox="0 0 32 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg width="18" height="20" viewBox="0 0 32 36" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="16" cy="10" r="6" fill="#C41200"/>
                 <path d="M4 32 Q4 22 16 22 Q28 22 28 32" fill="#C41200"/>
               </svg>
-              <svg width="32" height="36" viewBox="0 0 32 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg width="18" height="20" viewBox="0 0 32 36" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="16" cy="10" r="6" fill="#D8D4CC"/>
                 <path d="M4 32 Q4 22 16 22 Q28 22 28 32" fill="#D8D4CC"/>
               </svg>
-              <svg width="32" height="36" viewBox="0 0 32 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg width="18" height="20" viewBox="0 0 32 36" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="16" cy="10" r="6" fill="#D8D4CC"/>
                 <path d="M4 32 Q4 22 16 22 Q28 22 28 32" fill="#D8D4CC"/>
               </svg>
-              <svg width="32" height="36" viewBox="0 0 32 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg width="18" height="20" viewBox="0 0 32 36" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="16" cy="10" r="6" fill="#D8D4CC"/>
                 <path d="M4 32 Q4 22 16 22 Q28 22 28 32" fill="#D8D4CC"/>
               </svg>
-              <svg width="32" height="36" viewBox="0 0 32 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg width="18" height="20" viewBox="0 0 32 36" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="16" cy="10" r="6" fill="#D8D4CC"/>
                 <path d="M4 32 Q4 22 16 22 Q28 22 28 32" fill="#D8D4CC"/>
               </svg>
-              <div style="font-family:'Inter',sans-serif; font-size:13px; color:#888; margin-left:6px;">= 20% de la población</div>
+              <div style="font-family:'Inter',sans-serif; font-size:9px; color:#888; margin-left:4px;">= 20% de la población</div>
             </div>
           </div>
           <div class="m-body">Cerca del 20% de la población ha abandonado la isla en los últimos años.</div>
@@ -433,16 +407,16 @@ body {
     </div>
 
   </div><!-- /grid -->
-</div><!-- /canvas -->
 
-<!-- FOOTER -->
-<div class="footer">
-  <div class="footer-text"><strong style="color:#555;font-weight:600;">Fuentes:</strong> Reuters, ONEI, estadísticas migratorias de EE.UU. y análisis de Carlos Martínez (Archbridge Institute / Universidad George Mason).</div>
-  <div class="footer-logo">
-    <div class="fl-adn">adn</div>
-    <div class="fl-cuba">CUBA</div>
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-text"><strong style="color:#555;font-weight:600;">Fuentes:</strong> Reuters, ONEI, estadísticas migratorias de EE.UU. y Cubanomics.</div>
+    
+      
+    </div>
   </div>
-</div>
+
+</div><!-- /canvas -->
 
 </body>
 </html>
