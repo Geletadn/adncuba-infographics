@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1600">
+<title>Cinco datos — ADN Cuba</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  width: 1600px;
+  height: 1600px;
+  background: #F8F6F2;
+  font-family: 'Inter', sans-serif;
+  color: #1A1A1A;
+  overflow: hidden;
+  position: relative;
+}
+
+/* ── LAYOUT SHELL ── */
+.canvas {
+  width: 1600px;
+  height: 1600px;
+  display: flex;
+  flex-direction: column;
+  padding: 80px 110px 0 110px;
+}
+
+/* ── HEADER ── */
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 28px;
+}
+
+.header-left { flex: 1; }
+
+.eyebrow {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #C41200;
+  margin-bottom: 14px;
+}
+
+.title {
+  font-family: 'Oswald', sans-serif;
+  font-size: 58px;
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.5px;
+  color: #111;
+  text-transform: uppercase;
+  max-width: 1100px;
+}
+
+.subtitle {
+  margin-top: 16px;
+  font-family: 'Inter', sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: #555;
+  letter-spacing: 0.1px;
+  max-width: 820px;
+  line-height: 1.5;
+}
+
+/* ── RED RULE ── */
+.rule-red {
+  width: 100%;
+  height: 2px;
+  background: #C41200;
+  margin-bottom: 0;
+}
+
+.rule-light {
+  width: 100%;
+  height: 1px;
+  background: #D8D4CC;
+}
+
+/* ── GRID ── */
+.grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0;
+  margin-top: 0;
+}
+
+/* ── MODULE ── */
+.module {
+  padding: 52px 52px 44px 52px;
+  border-right: 1px solid #D8D4CC;
+  border-bottom: 1px solid #D8D4CC;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.module:nth-child(3n) { border-right: none; }
+.module:nth-child(4),
+.module:nth-child(5) { border-bottom: none; }
+
+/* Featured center module (Azúcar) */
+.module--featured {
+  border-left: none;
+  border-right: none;
+  background: #111;
+  position: relative;
+}
+
+.module--featured .m-num { color: rgba(255,255,255,0.35); }
+.module--featured .m-category { color: rgba(255,255,255,0.6); }
+.module--featured .m-stat { color: #E8322A; }
+.module--featured .m-body { color: rgba(255,255,255,0.82); }
+.module--featured .m-source { color: rgba(255,255,255,0.38); border-top-color: rgba(255,255,255,0.12); }
+.module--featured .m-divider { background: rgba(255,255,255,0.15); }
+.module--featured .rule-inline { background: #E8322A; }
+
+/* ── MODULE ELEMENTS ── */
+.m-num {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  color: #AAA49A;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.m-category {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #888;
+  margin-bottom: 28px;
+}
+
+.rule-inline {
+  width: 32px;
+  height: 2px;
+  background: #C41200;
+  margin-bottom: 24px;
+}
+
+.m-stat {
+  font-family: 'Oswald', sans-serif;
+  font-size: 88px;
+  font-weight: 700;
+  color: #C41200;
+  line-height: 0.9;
+  letter-spacing: -2px;
+  margin-bottom: 24px;
+}
+
+.m-stat--lg {
+  font-size: 72px;
+  letter-spacing: -2px;
+  line-height: 0.92;
+}
+
+.m-stat--xl {
+  font-size: 60px;
+  letter-spacing: -1px;
+  line-height: 1;
+}
+
+/* Mini chart for azúcar */
+.mini-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.bar-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.bar {
+  width: 28px;
+  border-radius: 2px 2px 0 0;
+}
+
+.bar-1989 { height: 80px; background: rgba(232, 50, 42, 0.22); }
+.bar-2025 { height: 5px; background: #E8322A; }
+
+.bar-year {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.5);
+}
+
+.bar-val {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  color: rgba(255,255,255,0.38);
+  white-space: nowrap;
+}
+
+.chart-arrow {
+  color: #E8322A;
+  font-size: 22px;
+  font-weight: 700;
+  padding-bottom: 28px;
+  font-family: 'Inter', sans-serif;
+}
+
+.m-body {
+  font-family: 'Inter', sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  color: #333;
+  line-height: 1.6;
+  flex: 1;
+}
+
+.m-source {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  color: #AAA49A;
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid #D8D4CC;
+  font-style: italic;
+  line-height: 1.5;
+}
+
+/* ── FOOTER ── */
+.footer {
+  height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #D8D4CC;
+  padding: 0 110px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #F8F6F2;
+}
+
+.footer-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: #888;
+  max-width: 1200px;
+  line-height: 1.4;
+}
+
+.footer-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  background: #C41200;
+  padding: 5px 10px 5px 8px;
+  flex-shrink: 0;
+}
+
+.fl-adn {
+  font-family: 'Oswald', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.5px;
+  line-height: 1;
+}
+
+.fl-cuba {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-left: 3px;
+  line-height: 1;
+  align-self: flex-end;
+  padding-bottom: 1px;
+}
+
+/* Icon strip above stat */
+.m-icon {
+  width: 26px;
+  height: 26px;
+  stroke: #C41200;
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  margin-bottom: 18px;
+}
+
+.module--featured .m-icon { stroke: rgba(232, 50, 42, 0.7); }
+</style>
+</head>
+<body>
+
+<div class="canvas">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-left">
+      <div class="eyebrow">Análisis · Economía cubana</div>
+      <div class="title">Cinco datos que muestran<br>la profundidad de la crisis cubana</div>
+      <div class="subtitle">La crisis económica de Cuba va mucho más allá de los indicadores macroeconómicos.</div>
+    </div>
+  </div>
+
+  <!-- RED RULE -->
+  <div class="rule-red" style="margin-bottom:2px;"></div>
+  <div class="rule-light" style="margin-bottom:0;"></div>
+
+  <!-- GRID -->
+  <div class="grid">
+
+    <!-- 01 ALIMENTACIÓN -->
+    <div class="module">
+      <div class="m-num">01</div>
+      <div class="m-category">Alimentación</div>
+      <svg class="m-icon" viewBox="0 0 26 26"><circle cx="13" cy="13" r="9"/><line x1="4" y1="13" x2="22" y2="13"/><line x1="9" y1="5" x2="9" y2="10"/><line x1="13" y1="4" x2="13" y2="10"/><line x1="17" y1="5" x2="17" y2="10"/></svg>
+      <div class="rule-inline"></div>
+      <div class="m-stat">−40%</div>
+      <div class="m-body">Producción agrícola y procesamiento de alimentos han caído más de 40% desde 2020.</div>
+      <div class="m-source">Reuters, datos oficiales cubanos.</div>
+    </div>
+
+    <!-- 02 ELECTRICIDAD -->
+    <div class="module">
+      <div class="m-num">02</div>
+      <div class="m-category">Electricidad</div>
+      <svg class="m-icon" viewBox="0 0 26 26"><circle cx="13" cy="11" r="6"/><line x1="13" y1="17" x2="13" y2="22"/><line x1="10" y1="22" x2="16" y2="22"/><path d="M15 8.5 L11.5 12 H14 L11 15"/></svg>
+      <div class="rule-inline"></div>
+      <div class="m-stat">−25%</div>
+      <div class="m-body">La generación eléctrica se ha reducido casi una cuarta parte desde 2019, agravando los apagones.</div>
+      <div class="m-source">Carlos Martínez (Archbridge Institute / Universidad George Mason), estadísticas oficiales cubanas.</div>
+    </div>
+
+    <!-- 04 MONEDA (top-right) -->
+    <div class="module">
+      <div class="m-num">04</div>
+      <div class="m-category">Moneda</div>
+      <svg class="m-icon" viewBox="0 0 26 26"><circle cx="11" cy="13" r="6"/><line x1="11" y1="7" x2="11" y2="19"/><line x1="18" y1="10" x2="26" y2="10"/><line x1="17" y1="13" x2="22" y2="13" stroke-dasharray="0"/><path d="M17 16 L26 16"/><path d="M22 8 L26 10 L22 12"/></svg>
+      <div class="rule-inline"></div>
+      <div class="m-stat m-stat--lg">+600<br><span style="font-size:44px;letter-spacing:-1px;">CUP/USD</span></div>
+      <div class="m-body">El peso superó los 600 por dólar en el mercado informal en junio de 2026.</div>
+      <div class="m-source">Carlos Martínez (Archbridge Institute / Universidad George Mason), Cubanomics.</div>
+    </div>
+
+    <!-- 03 AZÚCAR — FEATURED CENTER (row 2, col 1) -->
+    <div class="module module--featured" style="grid-column: 1 / 2; grid-row: 2;">
+      <div class="m-num">03</div>
+      <div class="m-category">Azúcar</div>
+      <svg class="m-icon" viewBox="0 0 26 26"><path d="M8 8 Q13 5 18 8 L17 20 Q13 22 9 20 Z"/><line x1="8" y1="14" x2="18" y2="14"/></svg>
+      <div class="rule-inline"></div>
+
+      <!-- mini chart -->
+      <div class="mini-chart">
+        <div class="bar-group">
+          <div class="bar bar-1989"></div>
+          <div class="bar-year">1989</div>
+          <div class="bar-val">8 M t</div>
+        </div>
+        <div class="chart-arrow">→</div>
+        <div class="bar-group">
+          <div class="bar bar-2025"></div>
+          <div class="bar-year">2025</div>
+          <div class="bar-val">&lt;200K t</div>
+        </div>
+      </div>
+
+      <div class="m-stat" style="font-size:74px;">−97,5%</div>
+      <div class="m-body">La producción azucarera caerá en 2025 a su nivel más bajo desde el siglo XIX.</div>
+      <div class="m-source">Reuters, informes oficiales y fuentes de la industria.</div>
+    </div>
+
+    <!-- 05 MIGRACIÓN (row 2, col 2–3) -->
+    <div class="module" style="grid-column: 2 / 4; grid-row: 2; border-right: none;">
+      <div class="m-num">05</div>
+      <div class="m-category">Migración</div>
+      <svg class="m-icon" viewBox="0 0 26 26"><path d="M4 16 Q7 11 13 12 Q19 11 22 16 Q19 19 13 19 Q7 21 4 16Z"/><path d="M13 8 L13 4 M13 4 L11 6 M13 4 L15 6"/><path d="M20 10 L24 8 M24 8 L24 10 M24 8 L22 8"/><path d="M6 10 L2 8 M2 8 L2 10 M2 8 L4 8"/></svg>
+      <div class="rule-inline"></div>
+      <div style="display:flex; align-items:flex-start; gap:60px; flex:1;">
+        <div style="flex:0 0 auto;">
+          <div class="m-stat m-stat--xl">1 de<br>cada 5</div>
+        </div>
+        <div style="flex:1; padding-top:8px;">
+          <div style="margin-bottom:24px;">
+            <!-- Visual: 5 person icons, 1 highlighted -->
+            <div style="display:flex; gap:14px; margin-bottom:18px; align-items:center;">
+              <svg width="32" height="36" viewBox="0 0 32 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="16" cy="10" r="6" fill="#C41200"/>
+                <path d="M4 32 Q4 22 16 22 Q28 22 28 32" fill="#C41200"/>
+              </svg>
+              <svg width="32" height="36" viewBox="0 0 32 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="16" cy="10" r="6" fill="#D8D4CC"/>
+                <path d="M4 32 Q4 22 16 22 Q28 22 28 32" fill="#D8D4CC"/>
+              </svg>
+              <svg width="32" height="36" viewBox="0 0 32 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="16" cy="10" r="6" fill="#D8D4CC"/>
+                <path d="M4 32 Q4 22 16 22 Q28 22 28 32" fill="#D8D4CC"/>
+              </svg>
+              <svg width="32" height="36" viewBox="0 0 32 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="16" cy="10" r="6" fill="#D8D4CC"/>
+                <path d="M4 32 Q4 22 16 22 Q28 22 28 32" fill="#D8D4CC"/>
+              </svg>
+              <svg width="32" height="36" viewBox="0 0 32 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="16" cy="10" r="6" fill="#D8D4CC"/>
+                <path d="M4 32 Q4 22 16 22 Q28 22 28 32" fill="#D8D4CC"/>
+              </svg>
+              <div style="font-family:'Inter',sans-serif; font-size:13px; color:#888; margin-left:6px;">= 20% de la población</div>
+            </div>
+          </div>
+          <div class="m-body">Cerca del 20% de la población ha abandonado la isla en los últimos años.</div>
+          <div class="m-source" style="border-top-color:#D8D4CC;">ONEI, estadísticas migratorias de EE.UU. y estimaciones demográficas.</div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /grid -->
+</div><!-- /canvas -->
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-text"><strong style="color:#555;font-weight:600;">Fuentes:</strong> Reuters, ONEI, estadísticas migratorias de EE.UU. y análisis de Carlos Martínez (Archbridge Institute / Universidad George Mason).</div>
+  <div class="footer-logo">
+    <div class="fl-adn">adn</div>
+    <div class="fl-cuba">CUBA</div>
+  </div>
+</div>
+
+</body>
+</html>
